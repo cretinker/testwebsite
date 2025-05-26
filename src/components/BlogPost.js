@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Typography, Box, Grid, Paper, Button, Divider, useTheme } from '@mui/material';
-import { ArrowForward as ArrowForwardIcon, Coffee as CoffeeIcon, Restaurant as RestaurantIcon } from '@mui/icons-material';
+import { Container, Typography, Box, Grid, Paper, Button, Divider, useTheme, Stack, Chip } from '@mui/material';
+import { ArrowForward as ArrowForwardIcon, Coffee as CoffeeIcon, Restaurant as RestaurantIcon, Info as InfoIcon } from '@mui/icons-material';
 
 const BlogPost = () => {
   const theme = useTheme();
@@ -22,7 +22,7 @@ const BlogPost = () => {
         </Typography>
         
         <Grid container spacing={4}>
-          <Grid item xs={12} md={8}>
+          <Grid item xs={12}>
             <Paper
               elevation={2}
               sx={{
@@ -108,66 +108,68 @@ const BlogPost = () => {
             </Paper>
           </Grid>
           
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12}>
             <Paper
               elevation={2}
               sx={{
                 p: { xs: 3, md: 4 },
                 borderRadius: 3,
-                position: 'sticky',
-                top: 100,
+                mt: 4,
               }}
             >
-              <Typography variant="h5" sx={{ mb: 3, fontWeight: 600, color: theme.palette.primary.main }}>
-                Quick Facts
-              </Typography>
-              
-              <Box component="ul" sx={{ pl: 2, mb: 4 }}>
-                <Box component="li" sx={{ mb: 2 }}>
-                  <Typography variant="body1" sx={{ fontSize: '1rem' }}>
-                    Rich in protein and iron
-                  </Typography>
-                </Box>
-                <Box component="li" sx={{ mb: 2 }}>
-                  <Typography variant="body1" sx={{ fontSize: '1rem' }}>
-                    Perfect for meal prep
-                  </Typography>
-                </Box>
-                <Box component="li" sx={{ mb: 2 }}>
-                  <Typography variant="body1" sx={{ fontSize: '1rem' }}>
-                    Great for using leftovers
-                  </Typography>
-                </Box>
-                <Box component="li" sx={{ mb: 2 }}>
-                  <Typography variant="body1" sx={{ fontSize: '1rem' }}>
-                    Customizable with different vegetables
-                  </Typography>
-                </Box>
+              <Box sx={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                mb: 3,
+                gap: 2,
+              }}>
+                <InfoIcon color="primary" sx={{ fontSize: 28 }} />
+                <Typography variant="h5" sx={{ fontWeight: 600, color: theme.palette.primary.main }}>
+                  Quick Facts
+                </Typography>
               </Box>
               
-              <Divider sx={{ my: 3 }} />
-              
-              <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-                Best Coffee Pairings
-              </Typography>
-              
-              <Box component="ul" sx={{ pl: 2 }}>
-                <Box component="li" sx={{ mb: 2 }}>
-                  <Typography variant="body1" sx={{ fontSize: '1rem' }}>
-                    Medium-dark roast
+              <Stack 
+                direction={{ xs: 'column', sm: 'row' }} 
+                spacing={3} 
+                sx={{ 
+                  mb: 4,
+                  flexWrap: 'wrap',
+                  justifyContent: 'space-around',
+                  '& > div': { 
+                    flex: { sm: '1 1 auto' },
+                    minWidth: { sm: '200px' },
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 1
+                  }
+                }}
+              >
+                <Box>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                    Nutritional Benefits
                   </Typography>
+                  <Chip label="Rich in protein and iron" sx={{ mb: 1 }} />
+                  <Chip label="Perfect for meal prep" />
                 </Box>
-                <Box component="li" sx={{ mb: 2 }}>
-                  <Typography variant="body1" sx={{ fontSize: '1rem' }}>
-                    French press method
+                
+                <Box>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                    Cooking Benefits
                   </Typography>
+                  <Chip label="Great for using leftovers" sx={{ mb: 1 }} />
+                  <Chip label="Customizable with different vegetables" />
                 </Box>
-                <Box component="li" sx={{ mb: 2 }}>
-                  <Typography variant="body1" sx={{ fontSize: '1rem' }}>
-                    Served black or with minimal cream
+                
+                <Box>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                    Best Coffee Pairings
                   </Typography>
+                  <Chip label="Medium-dark roast" sx={{ mb: 1 }} />
+                  <Chip label="French press method" sx={{ mb: 1 }} />
+                  <Chip label="Served black or with minimal cream" />
                 </Box>
-              </Box>
+              </Stack>
             </Paper>
           </Grid>
         </Grid>
